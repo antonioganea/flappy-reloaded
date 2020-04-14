@@ -58,32 +58,34 @@ export class Game extends Phaser.State {
                 element.x += element.width * 2;
             }
         });
-        if (this.floorTubesArray[this.scoreValue] !== undefined) {
+        if (this.floorTubesArray[this.scoreValue]) {
             if (this.floorTubesArray[this.scoreValue].x === this.bird.x) {
                 this.scoreValue++;
                 this.score.text = "Score: " + (this.scoreValue);
-        }
-
-        }
-
-            let floorTubeStart = ((this.floorTubesArray[this.scoreValue].x - 135 ) < this.bird.x);
-            let floorTubeEnd = (this.bird.x < (this.floorTubesArray[this.scoreValue].x  + 135 ));
-            let floorTubePeak = ((this.floorTubesArray[this.scoreValue].y - 331) < this.bird.y);
-            let floorTubeBottom = (this.bird.y < (this.floorTubesArray[this.scoreValue].y + 331));
-
-            let ceilingTubeStart = ((this.ceilingTubesArray[this.scoreValue].x - 135 ) < this.bird.x);
-            let ceilingTubeEnd = (this.bird.x < (this.ceilingTubesArray[this.scoreValue].x  + 135 ));
-            let ceilingTubePeak = ((this.ceilingTubesArray[this.scoreValue].y - 331) < this.bird.y);
-            let ceilingTubeBottom = (this.bird.y < (this.ceilingTubesArray[this.scoreValue].y + 331));
-
-            if (floorTubeStart && floorTubeEnd && floorTubePeak && floorTubeBottom) {
-                this.colisionValue++;
-                this.colision.text = "Colision: " + (this.colisionValue);
             }
-            if (ceilingTubeStart && ceilingTubeEnd && ceilingTubePeak && ceilingTubeBottom) {
-                this.colisionValue++;
-                this.colision.text = "Colision: " + (this.colisionValue);
+
+            if ( this.floorTubesArray[this.scoreValue] ) {
+                let floorTubeStart = ((this.floorTubesArray[this.scoreValue].x - 135 ) < this.bird.x);
+                let floorTubeEnd = (this.bird.x < (this.floorTubesArray[this.scoreValue].x  + 135 ));
+                let floorTubePeak = ((this.floorTubesArray[this.scoreValue].y - 331) < this.bird.y);
+                let floorTubeBottom = (this.bird.y < (this.floorTubesArray[this.scoreValue].y + 331));
+
+                let ceilingTubeStart = ((this.ceilingTubesArray[this.scoreValue].x - 135 ) < this.bird.x);
+                let ceilingTubeEnd = (this.bird.x < (this.ceilingTubesArray[this.scoreValue].x  + 135 ));
+                let ceilingTubePeak = ((this.ceilingTubesArray[this.scoreValue].y - 331) < this.bird.y);
+                let ceilingTubeBottom = (this.bird.y < (this.ceilingTubesArray[this.scoreValue].y + 331));
+
+                if (floorTubeStart && floorTubeEnd && floorTubePeak && floorTubeBottom) {
+                    this.colisionValue++;
+                    this.colision.text = "Colision: " + (this.colisionValue);
+                }
+                if (ceilingTubeStart && ceilingTubeEnd && ceilingTubePeak && ceilingTubeBottom) {
+                    this.colisionValue++;
+                    this.colision.text = "Colision: " + (this.colisionValue);
+                }
             }
+
+        }
     }
 
 
